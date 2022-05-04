@@ -144,6 +144,9 @@ trait Importable
                 if ($this->with_header) {
                     if ($k == $this->start_row) {
                         $headers = $this->toStrings($row);
+                        foreach ($headers as &$header){
+                            $header = Str::slug($header,'_');
+                        }
                         $count_header = count($headers);
                         continue;
                     }
